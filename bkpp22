@@ -25,10 +25,40 @@ In this modified version:
 
 The GOOGLE_CREDENTIALS environment variable is set to the GCP service account credentials retrieved from Jenkins credentials.
 
-The GOOGLE_CREDENTIALS_FILE environment variable is set to the path of a temporary file (google_credentials.json) containing the content of the GCP service account key file.
+The GOOGLE_CREDENTIALS_FILE environment variable is set to the path of a temporary file
+(google_credentials.json) containing the content of the GCP service account key file.
 
 Within the script block, the withEnv block sets the GOOGLE_APPLICATION_CREDENTIALS environment variable to point to the temporary file containing the service account key file content.
 
 Terraform commands (terraform init and terraform apply) are then executed with the injected credentials.
 
 This approach should allow Terraform to authenticate with GCP using the service account key file content retrieved from Jenkins credentials. Replace 'your-gcp-service-account-credentials-id' with the ID of your GCP service account credentials stored in Jenkins.
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+pipeline {
+    agent any
+
+    environment {
+        GOOGLE_CREDENTIALS = credentials('your-gcp-service-account-credentials-id')
+        GOOGLE_CREDENTIALS_FILE_PATH = "${env.WORKSPACE}/google_credentials.json"
+        GOOGLE_CREDENTIALS_FILE = writeFile file: GOOGLE_CREDENTIALS_FILE_PATH, text: GOOGLE_CREDENTIALS
+    }
+
+    stages {
+        stage('Terraform Apply') {
+            steps {
+                script {
+                    withEnv(['GOOGLE_APPLICATION_CREDENTIALS=${env.GOOGLE_CREDENTIALS_FILE}']) {
+                        sh '''
+                            terraform init
+                            terraform apply -auto-approve
+                        '''
+                    }
+                }
+            }
+        }
+    }
+}
