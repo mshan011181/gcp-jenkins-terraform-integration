@@ -1,0 +1,36 @@
+pipeline{
+    agent any
+    environment {
+        CLOUDSDK_CORE_PROJECT='devops-project1-418302' 
+        
+  }
+    stages{
+
+        stage('Git checkout'){
+            steps{
+                git credentialsId: '4974a9ad-a133-47c9-b173-fc09cbabf178', url: '
+            }
+        }
+        stage('Initialize'){
+            steps{
+                
+                sh 'terraform init'
+            
+            }
+        }
+        stage('Plan'){
+            steps{
+                
+                sh 'terraform plan'
+            
+            }
+        }
+        stage('apply'){
+            steps{
+                
+                sh 'terraform apply -auto-approve'
+            
+            }
+        }
+    }
+}
