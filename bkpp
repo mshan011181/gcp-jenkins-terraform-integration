@@ -65,4 +65,15 @@ jenkins@devops-project1-418302.iam.gserviceaccount.com
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 gcloud projects add-iam-policy-binding devops-project1-418302 --member serviceAccount:jenkins@devops-project1-418302.iam.gserviceaccount.com   --role roles/serviceusage.serviceUsageViewer
 
+@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+steps{
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: "aws_credential",
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                      sh 'terraform apply --auto-approve'
+                        }  
 
