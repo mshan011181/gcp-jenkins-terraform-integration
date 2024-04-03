@@ -48,9 +48,9 @@ pipeline{
          }
         stage('Terraform Apply') {
             steps {
-                script {
-                     withEnv(['GOOGLE_APPLICATION_CREDENTIALS=${env.GOOGLE_CREDENTIALS_FILE_PATH}']) {
-                        sh '''                        
+                    script {
+                    withEnv(['GOOGLE_APPLICATION_CREDENTIALS=${env.GOOGLE_CREDENTIALS_FILE_PATH}']) {
+                        sh '''
                             terraform init
                             terraform apply -auto-approve
                         '''
