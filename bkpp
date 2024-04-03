@@ -1,0 +1,9 @@
+ stage('Authenticate with GCP') {
+            steps {
+                // Echo the JSON key file content to a temporary file and authenticate with GCP
+                sh '''
+                    echo '$GCLOUD_JSON_KEY' > /tmp/gcp_key.json
+                    gcloud auth activate-service-account --key-file=/tmp/gcp_key.json
+                '''
+            }
+        } 
