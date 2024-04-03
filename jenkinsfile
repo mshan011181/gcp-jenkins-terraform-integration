@@ -1,19 +1,7 @@
 pipeline{
     agent any
     environment {
-       GCLOUD_JSON_KEY = '{
-  "type": "service_account",
-  "project_id": "devops-project1-418302",
-  "private_key_id": "e52a5cb1507cdece476cf43e890666976417b232",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCc3NVvimqZSkgC\nvxGe99durBHcPAvan2elU8+yuOnpV4jNVr/dtgTyKw9RZIlhlurYIQHLGAHhKBuG\nqD6T0I9xttBNdzOibWwEhckm1Ky57oNS89r9FiwL7ZQEt4P4NCVqE2DrSs2HgIPv\nnIhZguvkJ4+leinAnNt2ta4omJtcXCVAreFue2ttzUQR8ZxR8rgvD7u8g9N8yQQJ\nHXAdj2g8AXj9Op0u641nfYs60YfXksbODdGxbX5rcsD9yin4KDyug7cKCwWh/GTp\nbyfqI5VWomEhw+CeawsnXoG65wtl2pXQG8KDLIUpvbRqhYF0mxF5H7LPfILwHwUq\nZtSjgAzpAgMBAAECgf8V4ia/+yG/ZXjve29DB1B0aUPLdbmfWJ2vTksZNiCQbROE\nJEzpM6APTWBDaFV4/rl7bWiJfxkNK6/P9M1YZAlV0+IW7IpHjGoXpSSz/PeJiyp9\n1dBuEKnLSVmmKj0aY1CLxQPAYdO4ODWdgRRf+r83FSk+NczB7bJnJl8lk9uGdIo+\nISmJMhVTnyqYUuMNaVhxIDqLEc5Y7l6O6SDc0znldSIjgBwjIo7jo/70ml9SiPUf\nQHVoCgkhlQQbAY3JPJB1zJux5Cv7f5O+dvs/GubFXyi8Zfc8EJ/XVvwjk3WkEBPx\n78bLPkTySlL7gSBPxaLjx3+7GysObioZebHMJOECgYEAzRCn502WGyJ15uPDnM4a\nIxYo/9y0NLbYDapZl8bYIiRQG6WN9Y/46DFESeKDXOuyWzwYxrOd2+1VLN7aWxy8\niXSLdVw8bB5Nl0cmnzT6r6oD7HZp0SelamkzRUhIJU3sc1ZR6I6agpW2j9ZtAHUX\noETp3uHrvLv4E+zji1G0txUCgYEAw9Mo9mHqF010mREQ8Y3+sMWmiP93GbyPqiiI\npsOX6ufItDRpVkACJAOlmTtvqGJNAXv6GLScVoTzkDdasqamoOuWfJnXv0ibbrZ2\niLqvAS/H6q6GLsRgPRBYg8SdrkRQaA0j6TLkgDHO7mY4fjiQGopRwvWEL4jzLvp2\nbUCE84UCgYEAmOOYK63/AlAZE4IxL9HCTvKQsuL8QGkqgFXH4o9QSXRFfbdbNgCX\nlZZV0bheNINOQRN3bX4xbe1vGbs1lcTBFMKdz2xraDjXpLhZpU28sgfSURSgJF6o\nx8OThE417ApDBmMPQpI/xKiWqns2XabvbIC01YYfWmHSvhhaNl8+m1kCgYEAgEHR\nVm4TEGgeshJHcq553fXWeWw46ZZi0iPyPKdm3OgqwDyDsYYC4OuyjoYrP7IClbJJ\nv9yreM9jZ1WaBeC4yjUDP2DTuekoRH8la7A55yEQY1kjcYYVMml+T+97BySfNUdF\n+frnRj9ZNTOmVKVfXMKzgmmjxi6AeIh7AFt9uLECgYEApCM7anZ+6gNZg13OQwIy\ne8i+FrKO9VO6bJOwhqboJzvoYsHn8kcthcakB3L8kug56mUvdcdNXeJf4WDsoLoc\nLlw+DXF/A4rVb5Xqega4kqg3xn7TWCQ+W04Ti+qxkvqlhXFKQAeO+SW6A+8h+FY2\n2O8X3wOxVOM/ILSe+WqFja8=\n-----END PRIVATE KEY-----\n",
-  "client_email": "jenkins@devops-project1-418302.iam.gserviceaccount.com",
-  "client_id": "104952841287266935424",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/jenkins%40devops-project1-418302.iam.gserviceaccount.com",
-  "universe_domain": "googleapis.com"
-}'
+       GCLOUD_JSON_KEY = credentials("e52a5cb1507cdece476cf43e890666976417b232")
        CLOUDSDK_CORE_PROJECT='devops-project1-418302'               
   }
     stages{         
