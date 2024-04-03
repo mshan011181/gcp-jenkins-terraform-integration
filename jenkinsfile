@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment {
         CLOUDSDK_CORE_PROJECT='devops-project1-418302' 
-        GCLOUD_JSON_KEY = credentials('363ce6fa-3551-40f8-a562-16b25a8e1247')
+        CREDENTIALS_ID = 'gcp-jenkins'
          }
  stages{
         stage('Git checkout'){
