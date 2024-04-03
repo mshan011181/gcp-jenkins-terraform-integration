@@ -1,6 +1,3 @@
-variable "project_id" {
-    type = string
-}
 
 locals {
   project_id = var.project_id
