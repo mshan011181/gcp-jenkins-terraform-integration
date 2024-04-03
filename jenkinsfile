@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment {
-        CLOUDSDK_CORE_PROJECT='<PROJECT_ID>' 
+        CLOUDSDK_CORE_PROJECT='devops-project1-418302' 
         
   }
     stages{
