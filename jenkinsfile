@@ -7,7 +7,7 @@ pipeline{
  stages{
         stage('Git checkout'){
             steps{
-                git credentialsId: '4974a9ad-a133-47c9-b173-fc09cbabf178', url: '
+                git credentialsId: '4974a9ad-a133-47c9-b173-fc09cbabf178', url: 'https://github.com/mshan011181/gcp-jenkins-terraform-integration.git'
             }
         }
      stage('Authenticate with GCP') {
