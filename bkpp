@@ -118,3 +118,30 @@ steps{
                     }
                 }
             }
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+pipeline {
+    agent any
+
+    environment {
+        GOOGLE_CREDENTIALS = credentials('your-gcp-service-account-credentials-id')
+    }
+
+    stages {
+        stage('Terraform Apply') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'your-gcp-service-account-credentials-id', variable: 'GOOGLE_CREDENTIALS')]) {
+                        sh '''
+                            export GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_CREDENTIALS
+                            terraform init
+                            terraform apply -auto-approve
+                        '''
+                    }
+                }
+            }
+        }
+    }
+}
