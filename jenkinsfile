@@ -19,23 +19,22 @@ pipeline{
             }
         }
         stage('Plan'){
-            steps{
-                
-                sh 'terraform plan'
-            
-            }
-        }
-      stage('Terraform Apply') {
+            steps{               
+                sh 'terraform plan'            
+             }
+         }
+        stage('Terraform Apply') {
             steps {
                 script {
                     withCredentials([string(credentialsId: '73053188-1b58-4dce-8257-81156beea13f', variable: 'GOOGLE_CREDENTIALS')]) {
                         sh '''
+                            export GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_CREDENTIALS
                             terraform init
                             terraform apply -auto-approve
                         '''
                        }
-                    }
+                   }
                  }
-              }
-    }
+              }   
+  }
 }
