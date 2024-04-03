@@ -3,6 +3,10 @@ pipeline{
     environment {
         CLOUDSDK_CORE_PROJECT='devops-project1-418302'         
         GOOGLE_CREDENTIALS = credentials('73053188-1b58-4dce-8257-81156beea13f')
+        GOOGLE_CREDENTIALS_FILE_PATH = "${env.WORKSPACE}/google_credentials.json"
+        GOOGLE_CREDENTIALS_FILE = writeFile file: GOOGLE_CREDENTIALS_FILE_PATH, text: GOOGLE_CREDENTIALS
+
+
          }
  stages{
         stage('Git checkout'){
