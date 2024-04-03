@@ -13,6 +13,7 @@ pipeline{
           stage('Authenticate with GCP') {
             steps {
                 sh '''
+                    echo $GCLOUD_JSON_KEY
                     echo '$GCLOUD_JSON_KEY' > /tmp/gcp_key.json
                     gcloud auth activate-service-account --key-file=/tmp/gcp_key.json
                     '''
