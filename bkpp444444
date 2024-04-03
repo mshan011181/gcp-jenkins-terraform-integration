@@ -48,5 +48,5 @@ pipeline {
 handba89@jenkins-1-vm:~$ vi jenkins_iam.json
 shandba89@jenkins-1-vm:~$ 
 shandba89@jenkins-1-vm:~$ pwd
-/home/shandba89
+/home/shandba89/jenkins_iam.json
 
