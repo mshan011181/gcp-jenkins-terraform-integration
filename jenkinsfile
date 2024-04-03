@@ -25,8 +25,7 @@ pipeline{
             
             }
         }
-       #####
-        stage('Terraform Apply') {
+      stage('Terraform Apply') {
             steps {
                 script {
                     withCredentials([string(credentialsId: 'e52a5cb1507cdece476cf43e890666976417b232', variable: 'GOOGLE_CREDENTIALS')]) {
