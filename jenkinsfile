@@ -1,31 +1,25 @@
 pipeline{
     agent any
     environment {
-       // Specify the service account credentials ID from Jenkins credentials
-        GCLOUD_CREDENTIALS_ID = 'e52a5cb1507cdece476cf43e890666976417b232'
-        // Specify the default GCP project ID
-        GCLOUD_PROJECT_ID = 'devops-project1-418302' 
-            }
-    stages{         
+        CLOUDSDK_CORE_PROJECT='devops-project1-418302' 
+        GCLOUD_JSON_KEY = credentials('363ce6fa-3551-40f8-a562-16b25a8e1247')
+         }
+ stages{
         stage('Git checkout'){
             steps{
-                git credentialsId: '4974a9ad-a133-47c9-b173-fc09cbabf178', url: 'https://github.com/mshan011181/gcp-jenkins-terraform-integration.git'
-              }
+                git credentialsId: '4974a9ad-a133-47c9-b173-fc09cbabf178', url: '
             }
-          stage('Authenticate with GCP') {
+        }
+     stage('Authenticate with GCP') {
             steps {
-                // Retrieve the service account credentials from Jenkins credentials
-                withCredentials([googleComputeServiceAccount(credentialsId: GCLOUD_CREDENTIALS_ID, jsonKeyVariable: 'GCLOUD_JSON_KEY')]) {
-                    // Authenticate with GCP using the service account credentials
-                    sh '''
-                        echo "$GCLOUD_JSON_KEY" > /tmp/gcp_key.json
-                        gcloud auth activate-service-account --key-file=/tmp/gcp_key.json
-                        gcloud config set project $GCLOUD_PROJECT_ID
-                    '''
-                   }
-                 }
-               }
-      stage('Initialize'){
+                // Echo the JSON key file content to a temporary file and authenticate with GCP
+                sh '''
+                    echo $GCLOUD_JSON_KEY > /tmp/gcp_key.json
+                    gcloud auth activate-service-account --key-file=/tmp/gcp_key.json
+                '''
+            }
+        } 
+  stage('Initialize'){
             steps{
                 
                 sh 'terraform init'
