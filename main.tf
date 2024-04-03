@@ -7,6 +7,7 @@ provider "google" {
   project = local.project_id
   region  = "us-central1"
   zone    = "us-central1-b"
+  credentials = var.gcp-creds
 }
 
 resource "google_project_service" "compute_service" {
