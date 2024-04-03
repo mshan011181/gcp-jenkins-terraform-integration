@@ -40,9 +40,3 @@ pipeline{
   }
 }
 
-############
-script {
-                    withEnv(['GOOGLE_APPLICATION_CREDENTIALS=${env.GOOGLE_CREDENTIALS_FILE}']) {
-                        sh '''
-                            terraform init
-                            terraform apply -auto-approve
