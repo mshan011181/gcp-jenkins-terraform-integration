@@ -24,6 +24,34 @@ Copy code
 gcloud projects add-iam-policy-binding devops-project1-418302 \
     --member serviceAccount:your-service-account@your-project.iam.gserviceaccount.com \
     --role roles/serviceusage.serviceUsageAdmin
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+pipeline {
+    agent any
+
+    environment {
+        GOOGLE_CREDENTIALS = credentials('your-gcp-service-account-credentials-id')
+    }
+
+    stages {
+        stage('Terraform Apply') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'your-gcp-service-account-credentials-id', variable: 'GOOGLE_CREDENTIALS')]) {
+                        sh '''
+                            export GOOGLE_APPLICATION_CREDENTIALS=$GOOGLE_CREDENTIALS
+                            terraform init
+                            terraform apply -auto-approve
+                        '''
+                    }
+                }
+            }
+        }
+    }
+}
 Replace your-service-account@your-project.iam.gserviceaccount.com with the email address of your service account.
 
 Retry Terraform Operation: After granting the necessary permissions, retry the Terraform operation. 
