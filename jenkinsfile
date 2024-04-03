@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment {
         CLOUDSDK_CORE_PROJECT='devops-project1-418302' 
-        GCLOUD_JSON_KEY = credentials('e52a5cb1507cdece476cf43e890666976417b232')
+        GCLOUD_JSON_KEY = credentials(e52a5cb1507cdece476cf43e890666976417b232)
          }
  stages{
         stage('Git checkout'){
