@@ -54,6 +54,17 @@ shandba89@jenkins-1-vm:~$ pwd
 @@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 git branch: 'main', credentialsId: 'your-git-credentials-id', url: 'https://github.com/mshan011181/gcp-jenkins-terraform-integration.git'
+
+git branch: 'main', credentialsId: '4974a9ad-a133-47c9-b173-fc09cbabf178', url: 'https://github.com/mshan011181/gcp-jenkins-terraform-integration.git'
+git branch: 'main', credentialsId: 'your-git-credentials-id', url: 'https://github.com/mshan011181/gcp-jenkins-terraform-integration.git'
+git branch: 'main', credentialsId: 'your-git-credentials-id', url: 'https://github.com/mshan011181/gcp-jenkins-terraform-integration.git'
+
+git credentialsId: '4974a9ad-a133-47c9-b173-fc09cbabf178', url: 'https://github.com/mshan011181/gcp-jenkins-terraform-integration.git'
+4974a9ad-a133-47c9-b173-fc09cbabf178
+4974a9ad-a133-47c9-b173-fc09cbabf178
+4974a9ad-a133-47c9-b173-fc09cbabf178
+
+
 https://github.com/mshan011181/gcp-jenkins-terraform-integration.git
 https://github.com/mshan011181/gcp-jenkins-terraform-integration.git
 https://github.com/mshan011181/gcp-jenkins-terraform-integration.git
