@@ -7,3 +7,33 @@
                 '''
             }
         } 
+
+###################################################################
+
+Here's how you can address this:
+
+Check IAM Permissions: Review the IAM permissions assigned to the account or service account used by Terraform. 
+Make sure it has the necessary permissions to manage services within the Google Cloud project. Specifically, it needs the Service Usage Admin role or equivalent permissions.
+
+Grant Required Permissions: If the account or service account lacks the necessary permissions, you can grant them using the Google Cloud Console or
+the gcloud command-line tool. For example, to grant the Service Usage Admin role to a service account:
+
+sh
+Copy code
+
+gcloud projects add-iam-policy-binding devops-project1-418302 \
+    --member serviceAccount:your-service-account@your-project.iam.gserviceaccount.com \
+    --role roles/serviceusage.serviceUsageAdmin
+Replace your-service-account@your-project.iam.gserviceaccount.com with the email address of your service account.
+
+Retry Terraform Operation: After granting the necessary permissions, retry the Terraform operation. 
+Ensure that Terraform is using the correct credentials (either through environment variables or a service account key file) with sufficient privileges.
+
+By addressing the insufficient permissions issue and ensuring that Terraform has the necessary permissions, you should be able to resolve the error and
+proceed with your Terraform deployment.
+
+
+
+
+
+
