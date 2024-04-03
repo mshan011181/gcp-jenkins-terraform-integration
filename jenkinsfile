@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment {
         CLOUDSDK_CORE_PROJECT='devops-project1-418302' 
-        GOOGLE_CREDENTIALS = '363ce6fa-3551-40f8-a562-16b25a8e1247'
+        GOOGLE_CREDENTIALS = '73053188-1b58-4dce-8257-81156beea13f'
          }
  stages{
         stage('Git checkout'){
@@ -28,7 +28,7 @@ pipeline{
       stage('Terraform Apply') {
             steps {
                 script {
-                    withCredentials([string(credentialsId: '363ce6fa-3551-40f8-a562-16b25a8e1247', variable: 'GOOGLE_CREDENTIALS')]) {
+                    withCredentials([string(credentialsId: '73053188-1b58-4dce-8257-81156beea13f', variable: 'GOOGLE_CREDENTIALS')]) {
                         sh '''
                             terraform init
                             terraform apply -auto-approve
