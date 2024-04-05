@@ -15,7 +15,8 @@ pipeline{
            stage('Initialize'){                  
                           when {
                           expression {
-                          return params.TerraformAction == 'Deploy'
+                         // return params.TerraformAction == 'Deploy'
+                         return params.TerraformAction == 'Deploy' || params.TerraformAction == 'Destroy'
                                      }    
                             }
                          steps{                
