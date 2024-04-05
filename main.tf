@@ -12,6 +12,7 @@ provider "google" {
 resource "google_project_service" "compute_service" {
   project = local.project_id
   service = "compute.googleapis.com"
+  disable_dependent_services = true
  lifecycle {
     ignore_changes = all
   }
