@@ -26,7 +26,9 @@ pipeline{
         stage('destroy'){
             steps{               
                sh '''
-                 terraform apply -auto-approve'
+                 terraform state list
+                 terraform state rm google_project_service.compute_service
+                 terraform destroy -auto-approve
                  '''
               }
         }
