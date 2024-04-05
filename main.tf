@@ -16,7 +16,7 @@ resource "google_project_service" "compute_service" {
   disable_dependent_services = true
 
   lifecycle {
-    ignore_changes = ["all"]
+    ignore_changes = all
   }
 }
 
