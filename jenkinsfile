@@ -32,6 +32,16 @@ pipeline{
                           sh 'terraform plan'
                              }
                     }
+        stage('Apply'){
+                          when {
+                          expression {
+                          return params.TerraformAction == 'Deploy'
+                             }
+                          } 
+                          steps{               
+                          sh 'terraform apply -auto-approve'
+                             }
+                    }
         stage('destroy'){
                            when {
                           expression {
