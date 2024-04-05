@@ -8,13 +8,13 @@ variable "project_id" {
 variable "region" {
   description = "The region where resources will be created"
   type        = string
-  default     = "us-central1"
+  default     = ""
 }
 
 variable "zone" {
   description = "The zone where resources will be created"
   type        = string
-  default     = "us-central1-a"
+  default     = ""
 }
 
 variable "network_name" {
