@@ -9,6 +9,11 @@ provider "google" {
   credentials = "/home/shandba89/jenkins-gce.json"
 }
 
+resource "google_project_service" "compute_service" {
+  project = local.project_id
+  service = "compute.googleapis.com"
+}
+
 resource "google_compute_network" "vpc_network" {
   name                    = "terraform-network"
   auto_create_subnetworks = false
