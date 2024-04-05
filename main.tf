@@ -24,6 +24,9 @@ resource "google_compute_network" "vpc_network" {
   name                    = "terraform-network"
   auto_create_subnetworks = false
   delete_default_routes_on_create = true
+   depends_on = [
+    google_project_service.compute_service
+  ]
  }
 
 resource "google_compute_subnetwork" "private_network" {
