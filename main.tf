@@ -17,7 +17,7 @@ lifecycle {
       # Specify the attributes you want Terraform to ignore changes for.
       # In this case, we want to ignore all changes.
       # "*" can be used to ignore all changes for the resource.
-      "*",
+      "all",
     ]
   }
 }
