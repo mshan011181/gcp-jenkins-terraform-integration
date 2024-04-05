@@ -13,7 +13,7 @@ resource "google_project_service" "compute_service" {
   project = local.project_id
   service = "compute.googleapis.com"
 lifecycle {
-    ignore_changes = [all]
+    ignore_changes = ["all"]
     ]
   }
 }
