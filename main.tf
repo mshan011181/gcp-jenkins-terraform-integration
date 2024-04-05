@@ -13,11 +13,7 @@ resource "google_project_service" "compute_service" {
   project = local.project_id
   service = "compute.googleapis.com"
 lifecycle {
-    ignore_changes = [
-      # Specify the attributes you want Terraform to ignore changes for.
-      # In this case, we want to ignore all changes.
-      # "*" can be used to ignore all changes for the resource.
-      "all",
+    ignore_changes = [all]
     ]
   }
 }
