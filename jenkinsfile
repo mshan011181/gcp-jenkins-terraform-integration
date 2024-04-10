@@ -1,6 +1,6 @@
 pipeline{
     agent any
-          parameters {
+          -----------parameters {
           choice(name: 'TerraformAction', choices: 'Deploy\nDestroy', description: 'Select the action to perform')
                    }
           environment {
@@ -41,7 +41,7 @@ pipeline{
                              }
                           } 
                           steps{               
-                          sh 'terraform apply -auto-approve'
+                          sh 'terraform applyyyyyyyyyy -auto-approve'
                              }
                     }
         stage('destroy'){
